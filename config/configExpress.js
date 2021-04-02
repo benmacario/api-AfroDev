@@ -1,7 +1,12 @@
 const express = require('express');
+const consign = require('consign');
 
-const app = express();
+module.exports = () => {
+  const app = express();
 
-app.listen(3000, () => console.log('servidor rodando na porta 3000'));
+  app.use(express.json())
 
-export default app;
+  consign().include('controllers').into(app);
+
+  return app;
+}

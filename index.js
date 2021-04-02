@@ -1,7 +1,10 @@
-const express = require('express');
+const configExpress = require('./config/configExpress');
+const conexao = require('./infra/conexao');
 
-const app = express();
+const app = configExpress();
 
-app.listen(3000, () => console.log('servidor rodando na porta 3000'));
-
-export default app;
+conexao.connect(error => {
+  if(error) throw error
+  
+  app.listen(3000, () => console.log('Conexão estabelecida'));
+})
