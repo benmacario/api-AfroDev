@@ -6,7 +6,7 @@ module.exports = () => {
 
   app.use(express.json())
 
-  consign().include('controllers').into(app);
+  consign().include('./src/controllers').into(app);
 
   return app;
 }

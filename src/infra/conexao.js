@@ -3,9 +3,9 @@ const mysql = require('mysql');
 const conexao = mysql.createConnection({
   host: 'localhost',
   port: 3306,
-  user: 'root',
+  user: 'afrodev',
   password: 'afro9i5sR16dev',
-  database: 'afrodev'
+  database: 'afrodevAPI'
 });
 
 module.exports = conexao;

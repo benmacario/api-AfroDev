@@ -1,10 +1,14 @@
-const configExpress = require('./config/configExpress');
-const conexao = require('./infra/conexao');
+const configExpress = require('./src/config/configExpress');
+const conexao = require('./src/infra/conexao');
+const Tabela = require('./src/infra/Tabelas');
 
-const app = configExpress();
 
 conexao.connect(error => {
-  if(error) throw error
+  if(error) throw error;
+
+  Tabela.init(conexao);
+
+  const app = configExpress();
   
-  app.listen(3000, () => console.log('Conexão estabelecida'));
-})
+  app.listen(3000, () => console.log('Success: Conexão estabelecida com sucesso!'));
+});
